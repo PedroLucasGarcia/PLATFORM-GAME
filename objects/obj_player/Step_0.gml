@@ -20,6 +20,3 @@ hspd = lengthdir_x(move_spd, move_dir);
 //APLICANDO GRAVIDADE E LIMITANDO A VELOCIDADE VERTICAL
 vspd+=grv
 vspd = clamp(vspd, vspd_min, vspd_max);
-
-x+=hspd;
-y+=vspd;
