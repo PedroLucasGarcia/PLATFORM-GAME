@@ -16,13 +16,19 @@ vspd+=grv	//aplicando gravidade
 vspd = clamp(vspd, vspd_min, vspd_max);	//limitando a velocidade vertical
 
 if(move){	//se minha movimentação for diferente de 0
+	sprite_index = spr_player_run;	//sprite andando
 	move_dir = point_direction(0, 0, key_right - key_left, 0)	//essa função retorna uma direção
 	move_spd = approach(move_spd, move_spd_max, acc);	//aceleração
 }else{	//se minha movimentação for igual a 0
+	sprite_index = spr_player;	//sprite parada
 	move_spd = approach(move_spd, 0, dcc);	//desaceleração
 }
 
 hspd = lengthdir_x(move_spd, move_dir);	//move o x para uma direção e uma quantidade 
+
+if(hspd != 0) {	//se minha velocidade horizontal for diferente de 0
+	image_xscale = sign(hspd)
+}
 
 #endregion
 
