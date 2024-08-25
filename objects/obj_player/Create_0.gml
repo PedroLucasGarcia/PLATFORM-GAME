@@ -14,3 +14,8 @@ dcc = 0.3;				//desaceleração
 jump_height = 6;		//altura do pulo
 coyote_time = 0;		//pulo fora da plataforma
 coyote_time_max = 10;	//pulo máximo fora da plataforma 
+
+ x_scale = 1; // Escala x
+ y_scale = 1; // Escala y
+
+state = player_state_free;	//estado livre
