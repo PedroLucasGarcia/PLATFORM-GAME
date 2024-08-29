@@ -1,0 +1,1 @@
+instace_destroy(room_restart());
