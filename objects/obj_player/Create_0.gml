@@ -19,3 +19,7 @@ coyote_time_max = 10;	//pulo máximo fora da plataforma
  y_scale = 1; // Escala y
 
 state = player_state_free;	//estado livre
+
+global.objects_state = true; // Inicializa como 'true' para indicar obj_wall_normal ativo
+toggle = false; // Variável para controlar a troca
+global.toggle = false; // Variável para controlar a troca
