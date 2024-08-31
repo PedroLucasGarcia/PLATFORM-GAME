@@ -35,24 +35,36 @@ function player_state_free() {
 
 	#region PULO
 
-	var ground = place_meeting(x, y+1, obj_wall);	//essa variável verifica se o player está no chão
+	// Verifica se o player está no chão
+	var ground = place_meeting(x, y+1, obj_wall);
 
-	if(ground) {	//se estou no chão
-		coyote_time = coyote_time_max;	
-	}else{	//se não estou no chão
-		coyote_time--;
-		/*if(vspd < 0){
-			sprite_index = spr_player_jump			//sprite de pulo
-		}else if(vspd > 0){
-			sprite_index = spr_player_fall			//sprite de queda
-		}
-		*/
+	if (ground) { 
+	    // Se está no chão, redefine o coyote time
+	    coyote_time = coyote_time_max; 
+	} else { 
+	    // Se não está no chão, decrementa o coyote time
+	    coyote_time--;
 	}
 
-	if(key_jump and coyote_time) {	//se apertei a tecla de pulo
-		coyote_time = 0;
-		vspd = 0;
-		vspd-=jump_height;
+	// Verifica se a tecla de pulo foi pressionada e se ainda tem coyote time
+	if (key_jump and coyote_time > 0) { 
+	    coyote_time = 0;
+	    vspd = 0;
+	    vspd -= jump_height;
+
+	    // Alterna entre os objetos usando a flag toggle
+	    toggle = !toggle; // Inverte o valor de toggle
+	    if (toggle) {
+	        // Alterna para obj_wall_dead
+	        with (obj_wall_normal) {
+	            instance_change(obj_wall_dead, true);
+	        }
+	    } else {
+	        // Alterna para obj_wall_normal
+	        with (obj_wall_dead) {
+	            instance_change(obj_wall_normal, true);
+	        }
+	    }
 	}
 
 	#endregion
